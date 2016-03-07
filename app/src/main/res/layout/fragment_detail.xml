@@ -1,0 +1,122 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingLeft="0dp"
+    android:paddingRight="0dp"
+    android:paddingTop="0dp"
+    android:paddingBottom="0dp"
+    android:orientation="vertical"
+    tools:context="com.rana.movieapp.DetailActivityFragment">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingLeft="0dp"
+        android:paddingRight="0dp"
+        android:paddingTop="0dp"
+        android:paddingBottom="0dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:padding="20dp"
+            android:textSize="25sp"
+            android:textColor="@color/white"
+            android:background="@color/blue"
+            android:id="@+id/title"
+            android:text="@string/title"
+            android:layout_width="match_parent"
+            android:layout_height="100dp" />
+
+        <LinearLayout
+            android:layout_margin="10dp"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:layout_weight="1"
+                android:id="@+id/poster"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <LinearLayout
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:textSize="20sp"
+                    android:id="@+id/date"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+                <TextView
+                    android:textSize="20sp"
+                    android:id="@+id/vote_average"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+                <Button
+                    android:id="@+id/mark_as_favourite"
+                    android:layout_marginTop="5dp"
+                    android:background="@color/blue"
+                    android:textColor="@android:color/white"
+                    android:text="Mark as \n favourite"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <TextView
+            android:textSize="20sp"
+            android:layout_margin="10dp"
+            android:id="@+id/overview"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@android:color/black" />
+
+        <TextView
+            android:textSize="20sp"
+            android:layout_margin="10dp"
+            android:text="Trailers:"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <ListView
+            android:layout_margin="10dp"
+            android:id="@+id/video_list"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"></ListView>
+
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@android:color/black" />
+
+        <TextView
+            android:textSize="20sp"
+            android:layout_margin="10dp"
+            android:text="Reviews:"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+
+        <LinearLayout
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:showDividers="middle"
+            android:divider="?android:listDivider"
+            android:dividerPadding="5dp"
+            android:orientation="vertical"
+            android:id="@+id/review_list"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"></LinearLayout>
+    </LinearLayout>
+</ScrollView>
