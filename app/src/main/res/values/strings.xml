@@ -9,4 +9,20 @@
     <string name="pref_default_value">popularity.desc</string>
     <string name="action_refresh">Refresh</string>
     <string name="action_share" >Share</string>
+
+    <string name="date">date</string>
+    <string name="title_extras">title</string>
+    <string name="overview">overview</string>
+    <string name="vote">vote</string>
+    <string name="id">id</string>
+    <string name="image">image</string>
+    <string name="author">author</string>
+    <string name="content">content</string>
+
+    <string name="detail_movie">detail_movie</string>
+
+    <string name="youtube_url">http://www.youtube.com/watch?v=</string>
+    <string name="image_url">http://image.tmdb.org/t/p/w185</string>
+    <string name="api_key">505cf850fa9209395657e835f67f2aa0</string>
+    <string name="api_url">http://api.themoviedb.org/3/movie/</string>
 </resources>

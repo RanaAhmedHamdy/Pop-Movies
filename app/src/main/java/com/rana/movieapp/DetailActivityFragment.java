@@ -92,7 +92,7 @@ public class DetailActivityFragment extends Fragment {
         //get movie details saved in parcelable
         Bundle args = getArguments();
         if(args != null) {
-            currentMovie = args.getParcelable("detail_movie");
+            currentMovie = args.getParcelable(getString(R.string.detail_movie));
         } else {
             return null;
         }
@@ -118,7 +118,7 @@ public class DetailActivityFragment extends Fragment {
 
                 //open video in available applications
                 String ID = video.get(position).getKey();
-                String videoUrl = "http://www.youtube.com/watch?v=" + ID;
+                String videoUrl = getString(R.string.youtube_url) + ID;
                 startActivity(new Intent(Intent.ACTION_VIEW, Uri
                         .parse(videoUrl)));
             }
@@ -141,7 +141,7 @@ public class DetailActivityFragment extends Fragment {
 
             //if not favorite movie load poster from the internet
             if(favorite == false) {
-                Picasso.with(getActivity().getApplicationContext()).load("http://image.tmdb.org/t/p/w185" + currentMovie.getImageUrl()).into(poster);
+                Picasso.with(getActivity().getApplicationContext()).load(getString(R.string.image_url) + currentMovie.getImageUrl()).into(poster);
             } else {
                 //if movie is favourite then load poster save in internal storage
                 poster.setImageBitmap(Utility.loadBitmap(getActivity(), currentMovie.getImageUrl().substring(1)));
@@ -211,12 +211,12 @@ public class DetailActivityFragment extends Fragment {
                 try {
                     //get available video trailers for this movie
                     final String FORECAST_BASE_URL =
-                            "http://api.themoviedb.org/3/movie/" + currentMovie.getId() + "/videos";
+                            getString(R.string.api_url) + currentMovie.getId() + "/videos";
                     final String API_KEY_PARAM = "api_key";
 
                     Uri.Builder builder = Uri.parse(FORECAST_BASE_URL)
                             .buildUpon()
-                            .appendQueryParameter(API_KEY_PARAM, "505cf850fa9209395657e835f67f2aa0");
+                            .appendQueryParameter(API_KEY_PARAM, getString(R.string.api_key));
 
                     Log.i("url", builder.build().toString());
                     URL url = new URL(builder.build().toString());
@@ -346,7 +346,7 @@ public class DetailActivityFragment extends Fragment {
         for (int i = 0; i < movieArray.length(); i++) {
             JSONObject movie = movieArray.getJSONObject(i);
 
-            String id = movie.getString("id");
+            String id = movie.getString(getString(R.string.id));
             String type = movie.getString("type");
             String name = movie.getString("name");
             String key = movie.getString("key");
@@ -366,9 +366,9 @@ public class DetailActivityFragment extends Fragment {
         for (int i = 0; i < movieArray.length(); i++) {
             JSONObject movie = movieArray.getJSONObject(i);
 
-            String id = movie.getString("id");
-            String author = movie.getString("author");
-            String content = movie.getString("content");
+            String id = movie.getString(getString(R.string.id));
+            String author = movie.getString(getString(R.string.author));
+            String content = movie.getString(getString(R.string.content));
 
             ReviewItem item = new ReviewItem(id, author, content);
             reviews.add(item);
@@ -424,7 +424,7 @@ public class DetailActivityFragment extends Fragment {
             }
 
             //download image
-            Bitmap image = Utility.getBitmapFromURL("http://image.tmdb.org/t/p/w185" + currentMovie.getImageUrl());
+            Bitmap image = Utility.getBitmapFromURL(getString(R.string.image_url) + currentMovie.getImageUrl());
 
             //save image to internal storage
             Utility.saveFile(getActivity(), image, currentMovie.getImageUrl().substring(1));
@@ -466,7 +466,7 @@ public class DetailActivityFragment extends Fragment {
 
         //share first movie trailer
         if(!video.isEmpty())
-            shareIntent.putExtra(Intent.EXTRA_TEXT, "http://www.youtube.com/watch?v=" + video.get(0).getKey());
+            shareIntent.putExtra(Intent.EXTRA_TEXT, getString(R.string.youtube_url) + video.get(0).getKey());
         return shareIntent;
     }
 

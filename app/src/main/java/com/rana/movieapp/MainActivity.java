@@ -69,7 +69,7 @@ public class MainActivity extends ActionBarActivity implements MainActivityFragm
             // fragment transaction.
             Bundle args = new Bundle();
             //save details to parcelable so if orientation changes it remain selected
-            args.putParcelable("detail_movie", item);
+            args.putParcelable(getString(R.string.detail_movie), item);
 
             DetailActivityFragment fragment = new DetailActivityFragment();
             fragment.setArguments(args);
@@ -79,12 +79,12 @@ public class MainActivity extends ActionBarActivity implements MainActivityFragm
                     .commit();
         } else {
                 Intent intent = new Intent(this, DetailActivity.class);
-                intent.putExtra("title", item.getOriginalTitle());
-                intent.putExtra("date", item.getReleaseDate());
-                intent.putExtra("image", item.getImageUrl());
-                intent.putExtra("overview", item.getOverView());
-                intent.putExtra("vote", item.getVoteAverage());
-                intent.putExtra("id", item.getId());
+                intent.putExtra(getString(R.string.title_extras), item.getOriginalTitle());
+                intent.putExtra(getString(R.string.date), item.getReleaseDate());
+                intent.putExtra(getString(R.string.image), item.getImageUrl());
+                intent.putExtra(getString(R.string.overview), item.getOverView());
+                intent.putExtra(getString(R.string.vote), item.getVoteAverage());
+                intent.putExtra(getString(R.string.id), item.getId());
                 startActivity(intent);
         }
     }
@@ -97,7 +97,6 @@ public class MainActivity extends ActionBarActivity implements MainActivityFragm
         if (sort != null && !sort.equals(mSort)) {
             MainActivityFragment ff = (MainActivityFragment)getSupportFragmentManager().findFragmentById(R.id.fragment_movies);
             if ( null != ff ) {
-                Log.i("sort", "changed");
                 ff.onSortChanged();
             }
             DetailActivityFragment df = (DetailActivityFragment)getSupportFragmentManager().findFragmentByTag(DETAILFRAGMENT_TAG);

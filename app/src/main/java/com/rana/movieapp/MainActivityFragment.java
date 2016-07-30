@@ -36,6 +36,7 @@ public class MainActivityFragment extends Fragment {
     SharedPreferences sharedpreferences;
     private int mPosition = GridView.INVALID_POSITION;
     private static final String SELECTED_KEY = "selected_position";
+    private String FORECAST_BASE_URL;
 
     public interface Callback {
         /**
@@ -134,14 +135,19 @@ public class MainActivityFragment extends Fragment {
                 String movieJsonStr = null;
 
                 try {
-                    final String FORECAST_BASE_URL =
-                            "http://api.themoviedb.org/3/discover/movie?";
-                    final String SORT_PARAM = "sort_by";
+                    FORECAST_BASE_URL =
+                            "http://api.themoviedb.org/3/movie/";
+
+                    Log.i("params", params[0]);
+                    if(params[0].trim().equals(getString(R.string.pref_default_value)))
+                        FORECAST_BASE_URL = FORECAST_BASE_URL + "popular?";
+                    else
+                        FORECAST_BASE_URL = FORECAST_BASE_URL + "top_rated?";
+
                     final String API_KEY_PARAM = "api_key";
 
                     Uri.Builder builder = Uri.parse(FORECAST_BASE_URL)
                             .buildUpon()
-                            .appendQueryParameter(SORT_PARAM, params[0])
                             .appendQueryParameter(API_KEY_PARAM, "505cf850fa9209395657e835f67f2aa0");
 
                     Log.i("url", builder.build().toString());

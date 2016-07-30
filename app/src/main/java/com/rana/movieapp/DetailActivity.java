@@ -12,10 +12,10 @@ public class DetailActivity extends ActionBarActivity {
         setContentView(R.layout.activity_detail);
         if (savedInstanceState == null) {
             Bundle arguments = new Bundle();
-            MovieItem currentMovie = new MovieItem(getIntent().getExtras().getString("title"), getIntent().getExtras().getString("image"), getIntent().getExtras().getString("overview"), getIntent().getExtras().getString("vote"),
-                    getIntent().getExtras().getString("date"), getIntent().getExtras().getString("id"));
+            MovieItem currentMovie = new MovieItem(getIntent().getExtras().getString(getString(R.string.title_extras)), getIntent().getExtras().getString(getString(R.string.image)), getIntent().getExtras().getString(getString(R.string.overview)), getIntent().getExtras().getString(getString(R.string.vote)),
+                    getIntent().getExtras().getString(getString(R.string.date)), getIntent().getExtras().getString(getString(R.string.id)));
 
-            arguments.putParcelable("detail_movie", currentMovie);
+            arguments.putParcelable(getString(R.string.detail_movie), currentMovie);
 
             DetailActivityFragment fragment = new DetailActivityFragment();
             fragment.setArguments(arguments);
